@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gestion Funéraire — Logiciel de gestion pour morgues au Bénin</title>
+<meta name="description" content="Logiciel complet de gestion funéraire pour morgues au Bénin. Gérez vos corps, factures, personnel et stocks depuis votre téléphone.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --noir:#0A0A0A;
+  --blanc:#F7F4EE;
+  --or:#C8973A;
+  --or-clair:#E8B85A;
+  --gris:#2A2A2A;
+  --gris-texte:#6B6B6B;
+  --vert:#1A6B3C;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--noir);color:var(--blanc);font-family:'Inter',sans-serif;line-height:1.6;}
+
+/* ── NAVIGATION ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:18px 24px;display:flex;justify-content:space-between;align-items:center;background:rgba(10,10,10,.92);backdrop-filter:blur(12px);border-bottom:1px solid rgba(200,151,58,.15);}
+.nav-logo{font-family:'Playfair Display',serif;font-size:17px;color:var(--or);letter-spacing:.02em;}
+.nav-cta{background:var(--or);color:var(--noir);font-size:13px;font-weight:600;padding:9px 18px;border-radius:6px;text-decoration:none;transition:background .2s;}
+.nav-cta:hover{background:var(--or-clair);}
+
+/* ── HERO ── */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:100px 24px 60px;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 80% 60% at 50% 30%, rgba(200,151,58,.08) 0%, transparent 70%);}
+.hero-eyebrow{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--or);margin-bottom:24px;opacity:.9;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(38px,8vw,72px);font-weight:900;line-height:1.1;max-width:700px;margin-bottom:24px;}
+.hero h1 em{font-style:normal;color:var(--or);}
+.hero-sub{font-size:clamp(15px,2.5vw,18px);color:rgba(247,244,238,.65);max-width:480px;margin-bottom:40px;line-height:1.7;}
+.hero-actions{display:flex;flex-direction:column;gap:12px;align-items:center;}
+.btn-primary{background:var(--or);color:var(--noir);font-size:15px;font-weight:700;padding:16px 36px;border-radius:8px;text-decoration:none;display:inline-block;transition:all .2s;letter-spacing:.01em;}
+.btn-primary:hover{background:var(--or-clair);transform:translateY(-1px);}
+.btn-secondary{font-size:13px;color:rgba(247,244,238,.5);text-decoration:none;transition:color .2s;}
+.btn-secondary:hover{color:var(--blanc);}
+
+/* Ligne décorative */
+.divider{width:60px;height:2px;background:var(--or);margin:0 auto;opacity:.4;}
+
+/* ── CHIFFRES ── */
+.stats{padding:60px 24px;border-top:1px solid rgba(247,244,238,.06);border-bottom:1px solid rgba(247,244,238,.06);}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:700px;margin:0 auto;}
+.stat{text-align:center;padding:32px 16px;}
+.stat-num{font-family:'Playfair Display',serif;font-size:clamp(32px,6vw,52px);font-weight:900;color:var(--or);line-height:1;}
+.stat-label{font-size:12px;color:rgba(247,244,238,.45);margin-top:8px;letter-spacing:.06em;text-transform:uppercase;}
+
+/* ── FONCTIONNALITÉS ── */
+.features{padding:80px 24px;max-width:900px;margin:0 auto;}
+.section-label{font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--or);margin-bottom:16px;text-align:center;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(26px,5vw,40px);font-weight:700;text-align:center;margin-bottom:56px;line-height:1.2;}
+.features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:2px;}
+.feature{background:var(--gris);padding:32px 28px;transition:background .2s;}
+.feature:hover{background:#333;}
+.feature-icon{font-size:28px;margin-bottom:16px;display:block;}
+.feature-title{font-size:15px;font-weight:600;margin-bottom:10px;color:var(--blanc);}
+.feature-desc{font-size:13px;color:rgba(247,244,238,.55);line-height:1.65;}
+
+/* ── TARIF ── */
+.pricing{padding:80px 24px;text-align:center;background:var(--gris);}
+.price-card{background:var(--noir);border:1px solid rgba(200,151,58,.3);border-radius:16px;max-width:420px;margin:0 auto;padding:48px 40px;position:relative;overflow:hidden;}
+.price-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--or),var(--or-clair));}
+.price-badge{display:inline-block;background:rgba(200,151,58,.15);color:var(--or);font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:28px;}
+.price-amount{font-family:'Playfair Display',serif;font-size:56px;font-weight:900;color:var(--or);line-height:1;}
+.price-period{font-size:14px;color:rgba(247,244,238,.45);margin-top:6px;margin-bottom:32px;}
+.price-features{list-style:none;text-align:left;margin-bottom:36px;}
+.price-features li{font-size:14px;color:rgba(247,244,238,.7);padding:10px 0;border-bottom:1px solid rgba(247,244,238,.06);display:flex;align-items:center;gap:12px;}
+.price-features li:last-child{border-bottom:none;}
+.price-features li::before{content:'✓';color:var(--or);font-weight:700;flex-shrink:0;}
+.price-note{font-size:12px;color:rgba(247,244,238,.3);margin-top:16px;}
+
+/* ── COMMENT ÇA MARCHE ── */
+.how{padding:80px 24px;max-width:800px;margin:0 auto;}
+.steps{display:flex;flex-direction:column;gap:0;}
+.step{display:flex;gap:24px;padding:32px 0;border-bottom:1px solid rgba(247,244,238,.06);}
+.step:last-child{border-bottom:none;}
+.step-num{font-family:'Playfair Display',serif;font-size:42px;font-weight:900;color:rgba(200,151,58,.2);line-height:1;flex-shrink:0;width:56px;}
+.step-content{}
+.step-title{font-size:16px;font-weight:600;margin-bottom:8px;}
+.step-desc{font-size:14px;color:rgba(247,244,238,.5);line-height:1.65;}
+
+/* ── CTA FINAL ── */
+.cta-final{padding:80px 24px;text-align:center;position:relative;overflow:hidden;}
+.cta-final::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 80% at 50% 50%,rgba(200,151,58,.07) 0%,transparent 70%);}
+.cta-final h2{font-family:'Playfair Display',serif;font-size:clamp(28px,5vw,44px);font-weight:900;margin-bottom:16px;line-height:1.2;}
+.cta-final p{font-size:15px;color:rgba(247,244,238,.5);margin-bottom:36px;max-width:400px;margin-left:auto;margin-right:auto;}
+.whatsapp-btn{display:inline-flex;align-items:center;gap:12px;background:#25D366;color:#fff;font-size:15px;font-weight:700;padding:18px 36px;border-radius:8px;text-decoration:none;transition:all .2s;}
+.whatsapp-btn:hover{background:#20BA5A;transform:translateY(-1px);}
+.whatsapp-icon{font-size:20px;}
+
+/* ── FOOTER ── */
+footer{padding:32px 24px;border-top:1px solid rgba(247,244,238,.06);text-align:center;}
+footer p{font-size:12px;color:rgba(247,244,238,.25);}
+footer a{color:var(--or);text-decoration:none;}
+
+/* ── RESPONSIVE ── */
+@media(max-width:480px){
+  .stats-grid{grid-template-columns:1fr;gap:0;}
+  .stat{padding:20px 16px;}
+  .price-card{padding:36px 24px;}
+  .step{flex-direction:column;gap:8px;}
+  .step-num{font-size:28px;width:auto;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<nav>
+  <div class="nav-logo">🏢 Gestion Funéraire</div>
+  <a href="https://gestion-funeraire-app.netlify.app" class="nav-cta">Créer mon compte</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-eyebrow">Logiciel de gestion funéraire — Bénin</div>
+  <h1>Gérez votre morgue<br>depuis votre <em>téléphone</em></h1>
+  <p class="hero-sub">Enregistrement des corps, facturation, personnel, stocks, rapports — tout en un seul endroit, accessible 24h/24.</p>
+  <div class="hero-actions">
+    <a href="https://gestion-funeraire-app.netlify.app" class="btn-primary">Commencer gratuitement →</a>
+    <a href="#fonctionnalites" class="btn-secondary">Découvrir les fonctionnalités</a>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="stats">
+  <div class="stats-grid">
+    <div class="stat">
+      <div class="stat-num">24/7</div>
+      <div class="stat-label">Accessible</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Sécurisé</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Rôles utilisateurs</div>
+    </div>
+  </div>
+</section>
+
+<!-- FONCTIONNALITÉS -->
+<section class="features" id="fonctionnalites">
+  <div class="section-label">Fonctionnalités</div>
+  <h2 class="section-title">Tout ce dont votre structure a besoin</h2>
+  <div class="features-grid">
+    <div class="feature">
+      <span class="feature-icon">📋</span>
+      <div class="feature-title">Enregistrement des corps</div>
+      <div class="feature-desc">Fiche complète avec photo, informations du défunt, du déposant et suivi des 30 jours légaux.</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">🧾</span>
+      <div class="feature-title">Facturation automatique</div>
+      <div class="feature-desc">Calcul automatique des frais de conservation par tranche de jours. Factures PDF en un clic.</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">💰</span>
+      <div class="feature-title">Suivi financier complet</div>
+      <div class="feature-desc">Recettes, dépenses, trésorerie en temps réel. Rapports par période exportables en PDF et Excel.</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">👥</span>
+      <div class="feature-title">Gestion du personnel</div>
+      <div class="feature-desc">Fiches agents, paiement des salaires, classement des performances mensuelles et annuelles.</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">📦</span>
+      <div class="feature-title">Gestion des stocks</div>
+      <div class="feature-desc">Suivi du formol, médicaments et matériels. Alertes de stock bas et historique des mouvements.</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">🔔</span>
+      <div class="feature-title">Notifications en temps réel</div>
+      <div class="feature-desc">Le promoteur est alerté de chaque activité : enregistrement, retrait, paiement, dépense.</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">🔒</span>
+      <div class="feature-title">Accès sécurisé par rôle</div>
+      <div class="feature-desc">Promoteur, Gérant, Agent — chacun voit uniquement ce qui le concerne. Données isolées par structure.</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">☁️</span>
+      <div class="feature-title">Sauvegarde automatique</div>
+      <div class="feature-desc">Toutes vos données sont synchronisées en temps réel sur le cloud. Accessibles depuis n'importe quel appareil.</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">💬</span>
+      <div class="feature-title">Envoi WhatsApp</div>
+      <div class="feature-desc">Envoyez les factures directement aux familles par WhatsApp depuis l'application.</div>
+    </div>
+  </div>
+</section>
+
+<!-- TARIF -->
+<section class="pricing" id="tarif">
+  <div class="section-label">Tarif</div>
+  <h2 class="section-title" style="margin-bottom:40px">Simple et transparent</h2>
+  <div class="price-card">
+    <div class="price-badge">Abonnement mensuel</div>
+    <div class="price-amount">10 000</div>
+    <div class="price-period">FCFA par mois · par structure</div>
+    <ul class="price-features">
+      <li>Utilisateurs illimités (Promoteur, Gérant, Agents)</li>
+      <li>Toutes les fonctionnalités incluses</li>
+      <li>Sauvegarde cloud sécurisée</li>
+      <li>Accès depuis téléphone, tablette ou PC</li>
+      <li>Mises à jour gratuites</li>
+      <li>Support WhatsApp inclus</li>
+    </ul>
+    <a href="https://gestion-funeraire-app.netlify.app" class="btn-primary" style="width:100%;display:block;text-align:center">Créer mon compte →</a>
+    <div class="price-note">Paiement mensuel · Sans engagement · Payable par Mobile Money</div>
+  </div>
+</section>
+
+<!-- COMMENT ÇA MARCHE -->
+<section class="how" id="comment">
+  <div class="section-label" style="text-align:center">Mise en route</div>
+  <h2 class="section-title">Opérationnel en 5 minutes</h2>
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-content">
+        <div class="step-title">Créez votre compte</div>
+        <div class="step-desc">Renseignez le nom de votre structure et créez votre identifiant administrateur. C'est gratuit et immédiat.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-content">
+        <div class="step-title">Configurez votre structure</div>
+        <div class="step-desc">Ajoutez votre logo, vos tarifs de conservation, vos agents et votre personnel.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-content">
+        <div class="step-title">Commencez à gérer</div>
+        <div class="step-desc">Enregistrez vos premiers corps, émettez vos premières factures et suivez votre trésorerie en temps réel.</div>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-content">
+        <div class="step-title">Contactez-nous pour activer</div>
+        <div class="step-desc">Après votre période d'essai, contactez-nous sur WhatsApp pour activer votre abonnement par Mobile Money.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>Prêt à moderniser<br>votre morgue ?</h2>
+  <p>Rejoignez les structures funéraires du Bénin qui gèrent leur activité avec professionnalisme.</p>
+  <a href="https://wa.me/33162496691" class="whatsapp-btn" target="_blank">
+    <span class="whatsapp-icon">💬</span>
+    Nous contacter sur WhatsApp
+  </a>
+  <div style="margin-top:20px">
+    <a href="https://gestion-funeraire-app.netlify.app" class="btn-secondary" style="color:rgba(247,244,238,.4);font-size:13px;text-decoration:none">Ou créer directement mon compte →</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2026 Gestion Funéraire Bénin · <a href="https://gestion-funeraire-app.netlify.app">Accéder à l'application</a></p>
+</footer>
+
+</body>
+</html>
