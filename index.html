@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Gestion Funéraire — Logiciel de gestion pour morgues au Bénin</title>
-<meta name="description" content="Logiciel complet de gestion funéraire pour morgues au Bénin. Gérez vos corps, factures, personnel et stocks depuis votre téléphone.">
+<title>Gestion Funéraire — Logiciel de gestion funéraire</title>
+<meta name="description" content="Logiciel complet de gestion funéraire pour morgues. Gérez vos corps, factures, personnel et stocks depuis votre téléphone.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -118,7 +118,7 @@ footer a{color:var(--or);text-decoration:none;}
 
 <!-- HERO -->
 <section class="hero">
-  <div class="hero-eyebrow">Logiciel de gestion funéraire — Bénin</div>
+  <div class="hero-eyebrow">Logiciel de gestion funéraire</div>
   <h1>Gérez votre morgue<br>depuis votre <em>téléphone</em></h1>
   <p class="hero-sub">Enregistrement des corps, facturation, personnel, stocks, rapports — tout en un seul endroit, accessible 24h/24.</p>
   <div class="hero-actions">
@@ -201,21 +201,48 @@ footer a{color:var(--or);text-decoration:none;}
 <!-- TARIF -->
 <section class="pricing" id="tarif">
   <div class="section-label">Tarif</div>
-  <h2 class="section-title" style="margin-bottom:40px">Simple et transparent</h2>
-  <div class="price-card">
-    <div class="price-badge">Abonnement mensuel</div>
-    <div class="price-amount">10 000</div>
-    <div class="price-period">FCFA par mois · par structure</div>
-    <ul class="price-features">
-      <li>Utilisateurs illimités (Promoteur, Gérant, Agents)</li>
-      <li>Toutes les fonctionnalités incluses</li>
-      <li>Sauvegarde cloud sécurisée</li>
-      <li>Accès depuis téléphone, tablette ou PC</li>
-      <li>Mises à jour gratuites</li>
-      <li>Support WhatsApp inclus</li>
-    </ul>
-    <a href="https://gestion-funeraire-app.netlify.app" class="btn-primary" style="width:100%;display:block;text-align:center">Créer mon compte →</a>
-    <div class="price-note">Paiement mensuel · Sans engagement · Payable par Mobile Money</div>
+  <h2 class="section-title" style="margin-bottom:12px">Simple et transparent</h2>
+  <p style="font-size:14px;color:rgba(247,244,238,.45);margin-bottom:40px;">15 jours d'essai gratuit — aucune carte requise</p>
+
+  <!-- Grille 2 cartes -->
+  <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:780px;margin:0 auto;">
+
+    <!-- Carte Mensuel -->
+    <div class="price-card">
+      <div class="price-badge">Mensuel</div>
+      <div class="price-amount">10 000</div>
+      <div class="price-period">FCFA par mois · par structure</div>
+      <ul class="price-features">
+        <li>Utilisateurs illimités (Promoteur, Gérant, Agents)</li>
+        <li>Toutes les fonctionnalités incluses</li>
+        <li>Sauvegarde cloud sécurisée</li>
+        <li>Accès téléphone, tablette ou PC</li>
+        <li>Mises à jour gratuites</li>
+        <li>Support WhatsApp inclus</li>
+      </ul>
+      <a href="https://gestion-funeraire-app.netlify.app" class="btn-primary" style="width:100%;display:block;text-align:center">Essai gratuit 15 jours →</a>
+      <div class="price-note">Sans engagement · Payable par Mobile Money</div>
+    </div>
+
+    <!-- Carte Annuel -->
+    <div class="price-card" style="border-color:rgba(200,151,58,.6);">
+      <div style="position:absolute;top:16px;right:16px;background:var(--or);color:var(--noir);font-size:10px;font-weight:700;padding:4px 10px;border-radius:20px;letter-spacing:.06em;">2 MOIS OFFERTS</div>
+      <div class="price-badge">Annuel</div>
+      <div class="price-amount">90 000</div>
+      <div class="price-period">FCFA par an · par structure</div>
+      <p style="font-size:12px;color:var(--or);margin-bottom:24px;margin-top:-16px;">Économisez 30 000 FCFA/an</p>
+      <ul class="price-features">
+        <li>Utilisateurs illimités (Promoteur, Gérant, Agents)</li>
+        <li>Toutes les fonctionnalités incluses</li>
+        <li>Sauvegarde cloud sécurisée</li>
+        <li>Accès téléphone, tablette ou PC</li>
+        <li>Mises à jour gratuites</li>
+        <li>Support WhatsApp inclus</li>
+      </ul>
+      <a href="https://gestion-funeraire-app.netlify.app" class="btn-primary" style="width:100%;display:block;text-align:center">Essai gratuit 15 jours →</a>
+      <div class="price-note">Paiement annuel · Payable par Mobile Money</div>
+    </div>
+
   </div>
 </section>
 
@@ -249,7 +276,7 @@ footer a{color:var(--or);text-decoration:none;}
       <div class="step-num">4</div>
       <div class="step-content">
         <div class="step-title">Contactez-nous pour activer</div>
-        <div class="step-desc">Après votre période d'essai, contactez-nous sur WhatsApp pour activer votre abonnement par Mobile Money.</div>
+        <div class="step-desc">Profitez de 15 jours d'essai gratuit, puis contactez-nous sur WhatsApp pour activer votre abonnement par Mobile Money.</div>
       </div>
     </div>
   </div>
@@ -258,7 +285,7 @@ footer a{color:var(--or);text-decoration:none;}
 <!-- CTA FINAL -->
 <section class="cta-final">
   <h2>Prêt à moderniser<br>votre morgue ?</h2>
-  <p>Rejoignez les structures funéraires du Bénin qui gèrent leur activité avec professionnalisme.</p>
+  <p>Rejoignez les structures funéraires qui gèrent leur activité avec professionnalisme.</p>
   <a href="https://wa.me/33162496691" class="whatsapp-btn" target="_blank">
     <span class="whatsapp-icon">💬</span>
     Nous contacter sur WhatsApp
@@ -270,7 +297,7 @@ footer a{color:var(--or);text-decoration:none;}
 
 <!-- FOOTER -->
 <footer>
-  <p>© 2026 Gestion Funéraire Bénin · <a href="https://gestion-funeraire-app.netlify.app">Accéder à l'application</a></p>
+  <p>© 2026 Gestion Funéraire · <a href="https://gestion-funeraire-app.netlify.app">Accéder à l'application</a></p>
 </footer>
 
 </body>
